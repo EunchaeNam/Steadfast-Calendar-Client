@@ -51,6 +51,8 @@ const EventModal = () => {
     }
   };
 
+  const isSaveDisabled = title.trim() === '';
+
   const eventTypes = [
     { id: 'couple', label: '함께', color: 'bg-event-couple' },
     { id: 'me', label: '나만', color: 'bg-event-me' },
@@ -127,7 +129,12 @@ const EventModal = () => {
             )}
             <button
               type="submit"
-              className="px-8 py-3 bg-secondary text-white font-bold rounded-button hover:bg-green-500 transition-colors"
+              disabled={isSaveDisabled}
+              className={`px-8 py-3 font-bold rounded-button transition-colors ${
+                isSaveDisabled
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : 'bg-secondary text-white hover:bg-green-500'
+              }`}
             >
               저장
             </button>
